@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="535d5bcef5f9478aadd52f88c785d0ca" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_BookStore2Model.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Books" Width="1.5" PointX="12.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Categories" Width="1.5" PointX="15" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Customers" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Employees" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Genders" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Mail" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Publishers" Width="1.5" PointX="17.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Sales" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.tbl_City" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.tbl_Country" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.tbl_District" Width="1.5" PointX="3" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.tbl_Languages" Width="1.5" PointX="10.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Titles" Width="1.5" PointX="6" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Writers" Width="1.5" PointX="20.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.About" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.BestSeller" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Contact" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.Discount" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.User" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BookStore2Model.userType" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Books_tbl_Languages" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Customers_Genders" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Customers_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Customers_tbl_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Customers_tbl_District" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Employees_Genders" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Employees_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Employees_tbl_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Employees_tbl_District" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Employees_Titles" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Writers_Genders" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Sales_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Sales_tbl_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Sales_tbl_District" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_tbl_District_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.FK_Writers_tbl_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.BookEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.BooksCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.BooksCustomers" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.BookWriters" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.EmployeesLanguages" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.PublishersCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BookStore2Model.WriterCategories" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

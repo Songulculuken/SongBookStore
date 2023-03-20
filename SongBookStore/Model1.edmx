@@ -1,0 +1,2913 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_BookStore2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_BookStore2.dbo.About' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="aboutID" />
+          </Key>
+          <Property Name="aboutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aboutDescription" Type="nvarchar" MaxLength="4000" />
+          <Property Name="aboutEditörs" Type="nvarchar" MaxLength="4000" />
+          <Property Name="aboutSales" Type="nvarchar" MaxLength="4000" />
+          <Property Name="isTheAboutActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="adminID" />
+          </Key>
+          <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adminName" Type="nvarchar" MaxLength="50" />
+          <Property Name="adminEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="adminPassword" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_BookStore2.dbo.BestSeller' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BestSeller">
+          <Key>
+            <PropertyRef Name="bestSellerID" />
+          </Key>
+          <Property Name="bestSellerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookID" Type="int" />
+          <Property Name="categoryID" Type="int" />
+          <Property Name="isTheBestSellerActive" Type="bit" />
+          <Property Name="bestSellerDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookEmployees">
+          <Key>
+            <PropertyRef Name="bookID" />
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="bookID" Type="int" Nullable="false" />
+          <Property Name="employeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="bookID" />
+          </Key>
+          <Property Name="bookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookName" Type="nvarchar" MaxLength="150" />
+          <Property Name="bookYearOfPublication" Type="nvarchar" MaxLength="4" />
+          <Property Name="publisherID" Type="int" />
+          <Property Name="bookPrice" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="bookPageCount" Type="tinyint" />
+          <Property Name="bookStockQty" Type="tinyint" />
+          <Property Name="languageID" Type="int" />
+          <Property Name="bookDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="isTheBookActive" Type="bit" />
+          <Property Name="bookCoverPhoto" Type="nvarchar" MaxLength="255" />
+          <Property Name="bookISBN" Type="nvarchar" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="BooksCategories">
+          <Key>
+            <PropertyRef Name="bookID" />
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="bookID" Type="int" Nullable="false" />
+          <Property Name="categoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BooksCustomers">
+          <Key>
+            <PropertyRef Name="bookID" />
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="bookID" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookWriters">
+          <Key>
+            <PropertyRef Name="bookID" />
+            <PropertyRef Name="writerID" />
+          </Key>
+          <Property Name="bookID" Type="int" Nullable="false" />
+          <Property Name="writerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="categoryDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="isTheCategoryActive" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_BookStore2.dbo.Contact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contactID" />
+          </Key>
+          <Property Name="contactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contactNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="contactAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="contactEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="isTheContactActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="customerSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="customerTCIdentityNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="customerEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="customerPhone" Type="nvarchar" MaxLength="13" />
+          <Property Name="customerAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="countryID" Type="int" />
+          <Property Name="cityID" Type="int" />
+          <Property Name="districtID" Type="int" />
+          <Property Name="customerPostCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="isTheCustomerActive" Type="bit" />
+          <Property Name="customerPassword" Type="nvarchar" MaxLength="15" />
+          <Property Name="customerCurrentAccount" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="customerBirthDate" Type="datetime" />
+          <Property Name="genderID" Type="int" />
+          <Property Name="customerDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="isTheCustomerInstitutional" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_BookStore2.dbo.Discount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="discountID" />
+          </Key>
+          <Property Name="discountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookID" Type="int" />
+          <Property Name="categoryID" Type="int" />
+          <Property Name="discountPrice" Type="int" />
+          <Property Name="discountRatio" Type="int" />
+          <Property Name="writerID" Type="int" />
+          <Property Name="isTheDiscountActive" Type="nvarchar" MaxLength="50" />
+          <Property Name="discountDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="employeeSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="employeePhone" Type="nvarchar" MaxLength="13" />
+          <Property Name="employeeTCIdentityNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="employeeSgkNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="employeeStartingDateOfEmployment" Type="datetime" />
+          <Property Name="employeeEndingDateOfEmployment" Type="datetime" />
+          <Property Name="employeeSalary" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="titleID" Type="int" />
+          <Property Name="employeeAddress" Type="nvarchar" MaxLength="400" />
+          <Property Name="countryID" Type="int" />
+          <Property Name="cityID" Type="int" />
+          <Property Name="districtID" Type="int" />
+          <Property Name="isTheEmployeeActive" Type="bit" />
+          <Property Name="employeeBirthDate" Type="datetime" />
+          <Property Name="employeeContactNumber" Type="nvarchar" MaxLength="13" />
+          <Property Name="genderID" Type="int" />
+          <Property Name="employeeDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="employeeEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="employeeReportEmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeesLanguages">
+          <Key>
+            <PropertyRef Name="employeeID" />
+            <PropertyRef Name="languageID" />
+          </Key>
+          <Property Name="employeeID" Type="int" Nullable="false" />
+          <Property Name="languageID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="genderID" />
+          </Key>
+          <Property Name="genderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="genderDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="isTheGenderActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Mail">
+          <Key>
+            <PropertyRef Name="mailID" />
+          </Key>
+          <Property Name="mailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mailNameSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="mailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="mailMessage" Type="nvarchar" MaxLength="400" />
+          <Property Name="mailSubject" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="publisherID" />
+          </Key>
+          <Property Name="publisherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="publisherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="publisherAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="countryID" Type="int" />
+          <Property Name="cityID" Type="int" />
+          <Property Name="districtID" Type="int" />
+          <Property Name="publisherPhone" Type="nvarchar" MaxLength="13" />
+          <Property Name="publisherAuthorizedNameSurname" Type="nvarchar" MaxLength="100" />
+          <Property Name="publisherEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="isThePublisherActive" Type="bit" />
+          <Property Name="publisherDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="publisherPostCode" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PublishersCategories">
+          <Key>
+            <PropertyRef Name="publisherID" />
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="publisherID" Type="int" Nullable="false" />
+          <Property Name="categoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="salesID" />
+          </Key>
+          <Property Name="salesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salesBillNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="customerID" Type="int" />
+          <Property Name="salesPrice" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="salesVatRate" Type="tinyint" />
+          <Property Name="salesDate" Type="datetime" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="isTheSalesActive" Type="bit" />
+          <Property Name="salesDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="salesPiece" Type="tinyint" />
+          <Property Name="salesAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="countryID" Type="int" />
+          <Property Name="cityID" Type="int" />
+          <Property Name="districtID" Type="int" />
+          <Property Name="salesPostCode" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_City">
+          <Key>
+            <PropertyRef Name="cityID" />
+          </Key>
+          <Property Name="cityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cityDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="countryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Country">
+          <Key>
+            <PropertyRef Name="countryID" />
+          </Key>
+          <Property Name="countryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="countryName" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="countryShortCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="countryPhoneCode" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tbl_District">
+          <Key>
+            <PropertyRef Name="districtID" />
+          </Key>
+          <Property Name="districtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="districtName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="districtDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="cityID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Languages">
+          <Key>
+            <PropertyRef Name="languageID" />
+          </Key>
+          <Property Name="languageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="languageName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="languageDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="languageCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Titles">
+          <Key>
+            <PropertyRef Name="titleID" />
+          </Key>
+          <Property Name="titleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="titleShortCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="titleDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="isTheTitleActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="20" />
+          <Property Name="userPassword" Type="nvarchar" MaxLength="20" />
+          <Property Name="userTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="userType">
+          <Key>
+            <PropertyRef Name="userTypeID" />
+          </Key>
+          <Property Name="userTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WriterCategories">
+          <Key>
+            <PropertyRef Name="writerID" />
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="writerID" Type="int" Nullable="false" />
+          <Property Name="categoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Writers">
+          <Key>
+            <PropertyRef Name="writerID" />
+          </Key>
+          <Property Name="writerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="writerNameSurname" Type="nvarchar" MaxLength="250" />
+          <Property Name="countryID" Type="int" />
+          <Property Name="genderID" Type="int" />
+          <Property Name="isTheWriterActive" Type="bit" />
+          <Property Name="writerDescription" Type="nvarchar" MaxLength="400" />
+        </EntityType>
+        <Association Name="FK_BookEmployees_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="BookEmployees" Type="Self.BookEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="bookID" />
+            </Principal>
+            <Dependent Role="BookEmployees">
+              <PropertyRef Name="bookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookEmployees_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="BookEmployees" Type="Self.BookEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="BookEmployees">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_tbl_Languages">
+          <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="languageID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="languageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksCategories_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="BooksCategories" Type="Self.BooksCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="bookID" />
+            </Principal>
+            <Dependent Role="BooksCategories">
+              <PropertyRef Name="bookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksCategories_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="BooksCategories" Type="Self.BooksCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="categoryID" />
+            </Principal>
+            <Dependent Role="BooksCategories">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksCustomers_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="BooksCustomers" Type="Self.BooksCustomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="bookID" />
+            </Principal>
+            <Dependent Role="BooksCustomers">
+              <PropertyRef Name="bookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BooksCustomers_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="BooksCustomers" Type="Self.BooksCustomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="BooksCustomers">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookWriters_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="BookWriters" Type="Self.BookWriters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="bookID" />
+            </Principal>
+            <Dependent Role="BookWriters">
+              <PropertyRef Name="bookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookWriters_Writers">
+          <End Role="Writers" Type="Self.Writers" Multiplicity="1" />
+          <End Role="BookWriters" Type="Self.BookWriters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Writers">
+              <PropertyRef Name="writerID" />
+            </Principal>
+            <Dependent Role="BookWriters">
+              <PropertyRef Name="writerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="genderID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_tbl_District">
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_District">
+              <PropertyRef Name="districtID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="districtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="genderID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_tbl_District">
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_District">
+              <PropertyRef Name="districtID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="districtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Titles">
+          <End Role="Titles" Type="Self.Titles" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titles">
+              <PropertyRef Name="titleID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeesLanguages_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="EmployeesLanguages" Type="Self.EmployeesLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="EmployeesLanguages">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeesLanguages_tbl_Languages">
+          <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="1" />
+          <End Role="EmployeesLanguages" Type="Self.EmployeesLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="languageID" />
+            </Principal>
+            <Dependent Role="EmployeesLanguages">
+              <PropertyRef Name="languageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublishersCategories_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="PublishersCategories" Type="Self.PublishersCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="categoryID" />
+            </Principal>
+            <Dependent Role="PublishersCategories">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublishersCategories_Publishers">
+          <End Role="Publishers" Type="Self.Publishers" Multiplicity="1" />
+          <End Role="PublishersCategories" Type="Self.PublishersCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publishers">
+              <PropertyRef Name="publisherID" />
+            </Principal>
+            <Dependent Role="PublishersCategories">
+              <PropertyRef Name="publisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_tbl_District">
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_District">
+              <PropertyRef Name="districtID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="districtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_District_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="1" />
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="tbl_District">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WriterCategories_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="WriterCategories" Type="Self.WriterCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="categoryID" />
+            </Principal>
+            <Dependent Role="WriterCategories">
+              <PropertyRef Name="categoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WriterCategories_Writers">
+          <End Role="Writers" Type="Self.Writers" Multiplicity="1" />
+          <End Role="WriterCategories" Type="Self.WriterCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Writers">
+              <PropertyRef Name="writerID" />
+            </Principal>
+            <Dependent Role="WriterCategories">
+              <PropertyRef Name="writerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Writers_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Writers" Type="Self.Writers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="genderID" />
+            </Principal>
+            <Dependent Role="Writers">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Writers_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Writers" Type="Self.Writers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Writers">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore17" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore18" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore19" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore20" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore21" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore22" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore23" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore24" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore25" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore26" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore27" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore30" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore8" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStore9" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BookStoreExample" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getBestSellerListCategoryID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getBookListWithCategoryID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getBookListWithKategoriID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getBookListWithPublisherID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getBookListWithWriterID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getBookWriterOrCategoryName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryName" Type="nvarchar" Mode="In" />
+          <Parameter Name="writerNameSurname" Type="nvarchar" Mode="In" />
+          <Parameter Name="bookName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DB_BookStore2ModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookEmployees" EntityType="Self.BookEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BooksCategories" EntityType="Self.BooksCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BooksCustomers" EntityType="Self.BooksCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookWriters" EntityType="Self.BookWriters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesLanguages" EntityType="Self.EmployeesLanguages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publishers" EntityType="Self.Publishers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublishersCategories" EntityType="Self.PublishersCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_City" EntityType="Self.tbl_City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Country" EntityType="Self.tbl_Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_District" EntityType="Self.tbl_District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Languages" EntityType="Self.tbl_Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Titles" EntityType="Self.Titles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userType" EntityType="Self.userType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WriterCategories" EntityType="Self.WriterCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Writers" EntityType="Self.Writers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="About" EntityType="Self.About" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [About].[aboutID] AS [aboutID], 
+    [About].[aboutDescription] AS [aboutDescription], 
+    [About].[aboutEditörs] AS [aboutEditörs], 
+    [About].[aboutSales] AS [aboutSales], 
+    [About].[isTheAboutActive] AS [isTheAboutActive]
+    FROM [dbo].[About] AS [About]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BestSeller" EntityType="Self.BestSeller" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BestSeller].[bestSellerID] AS [bestSellerID], 
+    [BestSeller].[bookID] AS [bookID], 
+    [BestSeller].[categoryID] AS [categoryID], 
+    [BestSeller].[isTheBestSellerActive] AS [isTheBestSellerActive], 
+    [BestSeller].[bestSellerDescription] AS [bestSellerDescription]
+    FROM [dbo].[BestSeller] AS [BestSeller]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Contact" EntityType="Self.Contact" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Contact].[contactID] AS [contactID], 
+    [Contact].[contactNumber] AS [contactNumber], 
+    [Contact].[contactAddress] AS [contactAddress], 
+    [Contact].[contactEmail] AS [contactEmail], 
+    [Contact].[isTheContactActive] AS [isTheContactActive]
+    FROM [dbo].[Contact] AS [Contact]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Discount" EntityType="Self.Discount" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Discount].[discountID] AS [discountID], 
+    [Discount].[bookID] AS [bookID], 
+    [Discount].[categoryID] AS [categoryID], 
+    [Discount].[discountPrice] AS [discountPrice], 
+    [Discount].[discountRatio] AS [discountRatio], 
+    [Discount].[writerID] AS [writerID], 
+    [Discount].[isTheDiscountActive] AS [isTheDiscountActive], 
+    [Discount].[discountDescription] AS [discountDescription]
+    FROM [dbo].[Discount] AS [Discount]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BookEmployees_Books" Association="Self.FK_BookEmployees_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BookEmployees" EntitySet="BookEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookEmployees_Employees" Association="Self.FK_BookEmployees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="BookEmployees" EntitySet="BookEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_tbl_Languages" Association="Self.FK_Books_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksCategories_Books" Association="Self.FK_BooksCategories_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BooksCategories" EntitySet="BooksCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksCategories_Categories" Association="Self.FK_BooksCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="BooksCategories" EntitySet="BooksCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksCustomers_Books" Association="Self.FK_BooksCustomers_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BooksCustomers" EntitySet="BooksCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BooksCustomers_Customers" Association="Self.FK_BooksCustomers_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="BooksCustomers" EntitySet="BooksCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookWriters_Books" Association="Self.FK_BookWriters_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BookWriters" EntitySet="BookWriters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookWriters_Writers" Association="Self.FK_BookWriters_Writers">
+            <End Role="Writers" EntitySet="Writers" />
+            <End Role="BookWriters" EntitySet="BookWriters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Genders" Association="Self.FK_Customers_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_tbl_City" Association="Self.FK_Customers_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_tbl_Country" Association="Self.FK_Customers_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_tbl_District" Association="Self.FK_Customers_tbl_District">
+            <End Role="tbl_District" EntitySet="tbl_District" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Genders" Association="Self.FK_Employees_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_tbl_City" Association="Self.FK_Employees_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_tbl_Country" Association="Self.FK_Employees_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_tbl_District" Association="Self.FK_Employees_tbl_District">
+            <End Role="tbl_District" EntitySet="tbl_District" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Titles" Association="Self.FK_Employees_Titles">
+            <End Role="Titles" EntitySet="Titles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeesLanguages_Employees" Association="Self.FK_EmployeesLanguages_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="EmployeesLanguages" EntitySet="EmployeesLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeesLanguages_tbl_Languages" Association="Self.FK_EmployeesLanguages_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="EmployeesLanguages" EntitySet="EmployeesLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublishersCategories_Categories" Association="Self.FK_PublishersCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="PublishersCategories" EntitySet="PublishersCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublishersCategories_Publishers" Association="Self.FK_PublishersCategories_Publishers">
+            <End Role="Publishers" EntitySet="Publishers" />
+            <End Role="PublishersCategories" EntitySet="PublishersCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_tbl_City" Association="Self.FK_Sales_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_tbl_Country" Association="Self.FK_Sales_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_tbl_District" Association="Self.FK_Sales_tbl_District">
+            <End Role="tbl_District" EntitySet="tbl_District" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_District_tbl_City" Association="Self.FK_tbl_District_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="tbl_District" EntitySet="tbl_District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WriterCategories_Categories" Association="Self.FK_WriterCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="WriterCategories" EntitySet="WriterCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WriterCategories_Writers" Association="Self.FK_WriterCategories_Writers">
+            <End Role="Writers" EntitySet="Writers" />
+            <End Role="WriterCategories" EntitySet="WriterCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Writers_Genders" Association="Self.FK_Writers_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Writers" EntitySet="Writers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Writers_tbl_Country" Association="Self.FK_Writers_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Writers" EntitySet="Writers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_BookStore2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="adminID" />
+          </Key>
+          <Property Name="adminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adminName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adminEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="bookID" />
+          </Key>
+          <Property Name="bookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="bookYearOfPublication" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="publisherID" Type="Int32" />
+          <Property Name="bookPrice" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="bookPageCount" Type="Byte" />
+          <Property Name="bookStockQty" Type="Byte" />
+          <Property Name="languageID" Type="Int32" />
+          <Property Name="bookDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="isTheBookActive" Type="Boolean" />
+          <Property Name="bookCoverPhoto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="bookISBN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Languages" Relationship="Self.FK_Books_tbl_Languages" FromRole="Books" ToRole="tbl_Languages" />
+          <NavigationProperty Name="Employees" Relationship="Self.BookEmployees" FromRole="Books" ToRole="Employees" />
+          <NavigationProperty Name="Categories" Relationship="Self.BooksCategories" FromRole="Books" ToRole="Categories" />
+          <NavigationProperty Name="Customers" Relationship="Self.BooksCustomers" FromRole="Books" ToRole="Customers" />
+          <NavigationProperty Name="Writers" Relationship="Self.BookWriters" FromRole="Books" ToRole="Writers" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="categoryDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="isTheCategoryActive" Type="Boolean" />
+          <NavigationProperty Name="Books" Relationship="Self.BooksCategories" FromRole="Categories" ToRole="Books" />
+          <NavigationProperty Name="Publishers" Relationship="Self.PublishersCategories" FromRole="Categories" ToRole="Publishers" />
+          <NavigationProperty Name="Writers" Relationship="Self.WriterCategories" FromRole="Categories" ToRole="Writers" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customerSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customerTCIdentityNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="customerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="customerPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="customerAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="countryID" Type="Int32" />
+          <Property Name="cityID" Type="Int32" />
+          <Property Name="districtID" Type="Int32" />
+          <Property Name="customerPostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="isTheCustomerActive" Type="Boolean" />
+          <Property Name="customerPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="customerCurrentAccount" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="customerBirthDate" Type="DateTime" Precision="3" />
+          <Property Name="genderID" Type="Int32" />
+          <Property Name="customerDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="isTheCustomerInstitutional" Type="Boolean" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK_Customers_Genders" FromRole="Customers" ToRole="Genders" />
+          <NavigationProperty Name="tbl_City" Relationship="Self.FK_Customers_tbl_City" FromRole="Customers" ToRole="tbl_City" />
+          <NavigationProperty Name="tbl_Country" Relationship="Self.FK_Customers_tbl_Country" FromRole="Customers" ToRole="tbl_Country" />
+          <NavigationProperty Name="tbl_District" Relationship="Self.FK_Customers_tbl_District" FromRole="Customers" ToRole="tbl_District" />
+          <NavigationProperty Name="Books" Relationship="Self.BooksCustomers" FromRole="Customers" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="employeeSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="employeePhone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="employeeTCIdentityNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="employeeSgkNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="employeeStartingDateOfEmployment" Type="DateTime" Precision="3" />
+          <Property Name="employeeEndingDateOfEmployment" Type="DateTime" Precision="3" />
+          <Property Name="employeeSalary" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="titleID" Type="Int32" />
+          <Property Name="employeeAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="countryID" Type="Int32" />
+          <Property Name="cityID" Type="Int32" />
+          <Property Name="districtID" Type="Int32" />
+          <Property Name="isTheEmployeeActive" Type="Boolean" />
+          <Property Name="employeeBirthDate" Type="DateTime" Precision="3" />
+          <Property Name="employeeContactNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="genderID" Type="Int32" />
+          <Property Name="employeeDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="employeeEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="employeeReportEmployeeID" Type="Int32" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK_Employees_Genders" FromRole="Employees" ToRole="Genders" />
+          <NavigationProperty Name="tbl_City" Relationship="Self.FK_Employees_tbl_City" FromRole="Employees" ToRole="tbl_City" />
+          <NavigationProperty Name="tbl_Country" Relationship="Self.FK_Employees_tbl_Country" FromRole="Employees" ToRole="tbl_Country" />
+          <NavigationProperty Name="tbl_District" Relationship="Self.FK_Employees_tbl_District" FromRole="Employees" ToRole="tbl_District" />
+          <NavigationProperty Name="Titles" Relationship="Self.FK_Employees_Titles" FromRole="Employees" ToRole="Titles" />
+          <NavigationProperty Name="Books" Relationship="Self.BookEmployees" FromRole="Employees" ToRole="Books" />
+          <NavigationProperty Name="tbl_Languages" Relationship="Self.EmployeesLanguages" FromRole="Employees" ToRole="tbl_Languages" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="genderID" />
+          </Key>
+          <Property Name="genderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="genderDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="isTheGenderActive" Type="Boolean" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Genders" FromRole="Genders" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Genders" FromRole="Genders" ToRole="Employees" />
+          <NavigationProperty Name="Writers" Relationship="Self.FK_Writers_Genders" FromRole="Genders" ToRole="Writers" />
+        </EntityType>
+        <EntityType Name="Mail">
+          <Key>
+            <PropertyRef Name="mailID" />
+          </Key>
+          <Property Name="mailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mailNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mailMessage" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="mailSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="publisherID" />
+          </Key>
+          <Property Name="publisherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="publisherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="publisherAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="countryID" Type="Int32" />
+          <Property Name="cityID" Type="Int32" />
+          <Property Name="districtID" Type="Int32" />
+          <Property Name="publisherPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="publisherAuthorizedNameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="publisherEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="isThePublisherActive" Type="Boolean" />
+          <Property Name="publisherDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="publisherPostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Categories" Relationship="Self.PublishersCategories" FromRole="Publishers" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="salesID" />
+          </Key>
+          <Property Name="salesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salesBillNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="customerID" Type="Int32" />
+          <Property Name="salesPrice" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="salesVatRate" Type="Byte" />
+          <Property Name="salesDate" Type="DateTime" Precision="3" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="isTheSalesActive" Type="Boolean" />
+          <Property Name="salesDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="salesPiece" Type="Byte" />
+          <Property Name="salesAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="countryID" Type="Int32" />
+          <Property Name="cityID" Type="Int32" />
+          <Property Name="districtID" Type="Int32" />
+          <Property Name="salesPostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_City" Relationship="Self.FK_Sales_tbl_City" FromRole="Sales" ToRole="tbl_City" />
+          <NavigationProperty Name="tbl_Country" Relationship="Self.FK_Sales_tbl_Country" FromRole="Sales" ToRole="tbl_Country" />
+          <NavigationProperty Name="tbl_District" Relationship="Self.FK_Sales_tbl_District" FromRole="Sales" ToRole="tbl_District" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_City">
+          <Key>
+            <PropertyRef Name="cityID" />
+          </Key>
+          <Property Name="cityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cityDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="countryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_tbl_City" FromRole="tbl_City" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_tbl_City" FromRole="tbl_City" ToRole="Employees" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_tbl_City" FromRole="tbl_City" ToRole="Sales" />
+          <NavigationProperty Name="tbl_District" Relationship="Self.FK_tbl_District_tbl_City" FromRole="tbl_City" ToRole="tbl_District" />
+        </EntityType>
+        <EntityType Name="tbl_Country">
+          <Key>
+            <PropertyRef Name="countryID" />
+          </Key>
+          <Property Name="countryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="countryName" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="countryShortCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="countryPhoneCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_tbl_Country" FromRole="tbl_Country" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_tbl_Country" FromRole="tbl_Country" ToRole="Employees" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_tbl_Country" FromRole="tbl_Country" ToRole="Sales" />
+          <NavigationProperty Name="Writers" Relationship="Self.FK_Writers_tbl_Country" FromRole="tbl_Country" ToRole="Writers" />
+        </EntityType>
+        <EntityType Name="tbl_District">
+          <Key>
+            <PropertyRef Name="districtID" />
+          </Key>
+          <Property Name="districtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="districtDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="cityID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_tbl_District" FromRole="tbl_District" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_tbl_District" FromRole="tbl_District" ToRole="Employees" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_tbl_District" FromRole="tbl_District" ToRole="Sales" />
+          <NavigationProperty Name="tbl_City" Relationship="Self.FK_tbl_District_tbl_City" FromRole="tbl_District" ToRole="tbl_City" />
+        </EntityType>
+        <EntityType Name="tbl_Languages">
+          <Key>
+            <PropertyRef Name="languageID" />
+          </Key>
+          <Property Name="languageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="languageName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="languageDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="languageCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Books_tbl_Languages" FromRole="tbl_Languages" ToRole="Books" />
+          <NavigationProperty Name="Employees" Relationship="Self.EmployeesLanguages" FromRole="tbl_Languages" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Titles">
+          <Key>
+            <PropertyRef Name="titleID" />
+          </Key>
+          <Property Name="titleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="titleShortCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="titleDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="isTheTitleActive" Type="Boolean" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Titles" FromRole="Titles" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Writers">
+          <Key>
+            <PropertyRef Name="writerID" />
+          </Key>
+          <Property Name="writerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="writerNameSurname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="countryID" Type="Int32" />
+          <Property Name="genderID" Type="Int32" />
+          <Property Name="isTheWriterActive" Type="Boolean" />
+          <Property Name="writerDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK_Writers_Genders" FromRole="Writers" ToRole="Genders" />
+          <NavigationProperty Name="tbl_Country" Relationship="Self.FK_Writers_tbl_Country" FromRole="Writers" ToRole="tbl_Country" />
+          <NavigationProperty Name="Books" Relationship="Self.BookWriters" FromRole="Writers" ToRole="Books" />
+          <NavigationProperty Name="Categories" Relationship="Self.WriterCategories" FromRole="Writers" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="aboutID" />
+          </Key>
+          <Property Name="aboutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aboutDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="aboutEditörs" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="aboutSales" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="isTheAboutActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BestSeller">
+          <Key>
+            <PropertyRef Name="bestSellerID" />
+          </Key>
+          <Property Name="bestSellerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookID" Type="Int32" />
+          <Property Name="categoryID" Type="Int32" />
+          <Property Name="isTheBestSellerActive" Type="Boolean" />
+          <Property Name="bestSellerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contactID" />
+          </Key>
+          <Property Name="contactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contactAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isTheContactActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="discountID" />
+          </Key>
+          <Property Name="discountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookID" Type="Int32" />
+          <Property Name="categoryID" Type="Int32" />
+          <Property Name="discountPrice" Type="Int32" />
+          <Property Name="discountRatio" Type="Int32" />
+          <Property Name="writerID" Type="Int32" />
+          <Property Name="isTheDiscountActive" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="discountDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="userPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="userTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="userType">
+          <Key>
+            <PropertyRef Name="userTypeID" />
+          </Key>
+          <Property Name="userTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Books_tbl_Languages">
+          <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="languageID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="languageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="genderID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_tbl_District">
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_District">
+              <PropertyRef Name="districtID" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="districtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="genderID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_tbl_District">
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_District">
+              <PropertyRef Name="districtID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="districtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Titles">
+          <End Role="Titles" Type="Self.Titles" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titles">
+              <PropertyRef Name="titleID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Writers_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Writers" Type="Self.Writers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="genderID" />
+            </Principal>
+            <Dependent Role="Writers">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_tbl_District">
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_District">
+              <PropertyRef Name="districtID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="districtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_District_tbl_City">
+          <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="1" />
+          <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_City">
+              <PropertyRef Name="cityID" />
+            </Principal>
+            <Dependent Role="tbl_District">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Writers_tbl_Country">
+          <End Role="tbl_Country" Type="Self.tbl_Country" Multiplicity="0..1" />
+          <End Role="Writers" Type="Self.Writers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Country">
+              <PropertyRef Name="countryID" />
+            </Principal>
+            <Dependent Role="Writers">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BookEmployees">
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+        </Association>
+        <Association Name="BooksCategories">
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+        </Association>
+        <Association Name="BooksCustomers">
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+        </Association>
+        <Association Name="BookWriters">
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <End Role="Writers" Type="Self.Writers" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeesLanguages">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="*" />
+        </Association>
+        <Association Name="PublishersCategories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <End Role="Publishers" Type="Self.Publishers" Multiplicity="*" />
+        </Association>
+        <Association Name="WriterCategories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <End Role="Writers" Type="Self.Writers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DB_BookStore2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="Books" EntityType="Self.Books" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" />
+          <EntitySet Name="Mail" EntityType="Self.Mail" />
+          <EntitySet Name="Publishers" EntityType="Self.Publishers" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tbl_City" EntityType="Self.tbl_City" />
+          <EntitySet Name="tbl_Country" EntityType="Self.tbl_Country" />
+          <EntitySet Name="tbl_District" EntityType="Self.tbl_District" />
+          <EntitySet Name="tbl_Languages" EntityType="Self.tbl_Languages" />
+          <EntitySet Name="Titles" EntityType="Self.Titles" />
+          <EntitySet Name="Writers" EntityType="Self.Writers" />
+          <EntitySet Name="About" EntityType="Self.About" />
+          <EntitySet Name="BestSeller" EntityType="Self.BestSeller" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="Discount" EntityType="Self.Discount" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="userType" EntityType="Self.userType" />
+          <AssociationSet Name="FK_Books_tbl_Languages" Association="Self.FK_Books_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Genders" Association="Self.FK_Customers_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_tbl_City" Association="Self.FK_Customers_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_tbl_Country" Association="Self.FK_Customers_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_tbl_District" Association="Self.FK_Customers_tbl_District">
+            <End Role="tbl_District" EntitySet="tbl_District" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Genders" Association="Self.FK_Employees_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_tbl_City" Association="Self.FK_Employees_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_tbl_Country" Association="Self.FK_Employees_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_tbl_District" Association="Self.FK_Employees_tbl_District">
+            <End Role="tbl_District" EntitySet="tbl_District" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Titles" Association="Self.FK_Employees_Titles">
+            <End Role="Titles" EntitySet="Titles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Writers_Genders" Association="Self.FK_Writers_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Writers" EntitySet="Writers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_tbl_City" Association="Self.FK_Sales_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_tbl_Country" Association="Self.FK_Sales_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_tbl_District" Association="Self.FK_Sales_tbl_District">
+            <End Role="tbl_District" EntitySet="tbl_District" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_District_tbl_City" Association="Self.FK_tbl_District_tbl_City">
+            <End Role="tbl_City" EntitySet="tbl_City" />
+            <End Role="tbl_District" EntitySet="tbl_District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Writers_tbl_Country" Association="Self.FK_Writers_tbl_Country">
+            <End Role="tbl_Country" EntitySet="tbl_Country" />
+            <End Role="Writers" EntitySet="Writers" />
+          </AssociationSet>
+          <AssociationSet Name="BookEmployees" Association="Self.BookEmployees">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="BooksCategories" Association="Self.BooksCategories">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="BooksCustomers" Association="Self.BooksCustomers">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="BookWriters" Association="Self.BookWriters">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Writers" EntitySet="Writers" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeesLanguages" Association="Self.EmployeesLanguages">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+          </AssociationSet>
+          <AssociationSet Name="PublishersCategories" Association="Self.PublishersCategories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Publishers" EntitySet="Publishers" />
+          </AssociationSet>
+          <AssociationSet Name="WriterCategories" Association="Self.WriterCategories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Writers" EntitySet="Writers" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore" ReturnType="Collection(DB_BookStore2Model.sp_BookStore_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore1" ReturnType="Collection(DB_BookStore2Model.sp_BookStore1_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore10" ReturnType="Collection(DB_BookStore2Model.sp_BookStore10_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore17" ReturnType="Collection(DB_BookStore2Model.sp_BookStore17_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore18" ReturnType="Collection(DB_BookStore2Model.sp_BookStore18_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore19" ReturnType="Collection(DB_BookStore2Model.sp_BookStore19_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore2" ReturnType="Collection(DB_BookStore2Model.sp_BookStore2_Result)">
+          <Parameter Name="categoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore20" ReturnType="Collection(DB_BookStore2Model.sp_BookStore20_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore21" ReturnType="Collection(DB_BookStore2Model.sp_BookStore21_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore22" ReturnType="Collection(DB_BookStore2Model.sp_BookStore22_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore23" ReturnType="Collection(DB_BookStore2Model.sp_BookStore23_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore24" ReturnType="Collection(DB_BookStore2Model.sp_BookStore24_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore25" ReturnType="Collection(DB_BookStore2Model.sp_BookStore25_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore26" ReturnType="Collection(DB_BookStore2Model.sp_BookStore26_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore27" ReturnType="Collection(DB_BookStore2Model.sp_BookStore27_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore3" ReturnType="Collection(DB_BookStore2Model.sp_BookStore3_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore30" ReturnType="Collection(DB_BookStore2Model.sp_BookStore30_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore4" ReturnType="Collection(DB_BookStore2Model.sp_BookStore4_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore5" ReturnType="Collection(DB_BookStore2Model.sp_BookStore5_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore6" ReturnType="Collection(DB_BookStore2Model.sp_BookStore6_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore7" ReturnType="Collection(DB_BookStore2Model.sp_BookStore7_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore8" ReturnType="Collection(DB_BookStore2Model.sp_BookStore8_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStore9" ReturnType="Collection(DB_BookStore2Model.sp_BookStore9_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BookStoreExample" ReturnType="Collection(DB_BookStore2Model.sp_BookStoreExample_Result)">
+          <Parameter Name="categoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getBestSellerListCategoryID" ReturnType="Collection(DB_BookStore2Model.sp_getBestSellerListCategoryID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getBookListWithCategoryID" ReturnType="Collection(DB_BookStore2Model.sp_getBookListWithCategoryID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getBookListWithKategoriID" ReturnType="Collection(DB_BookStore2Model.sp_getBookListWithKategoriID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getBookListWithPublisherID" ReturnType="Collection(DB_BookStore2Model.sp_getBookListWithPublisherID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getBookListWithWriterID" ReturnType="Collection(DB_BookStore2Model.sp_getBookListWithWriterID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getBookWriterOrCategoryName" ReturnType="Collection(DB_BookStore2Model.sp_getBookWriterOrCategoryName_Result)">
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+            <Parameter Name="writerNameSurname" Mode="In" Type="String" />
+            <Parameter Name="bookName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_BookStore2Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DB_BookStore2Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_BookStore_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore1_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore10_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore17_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore18_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore19_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore2_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore20_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore21_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore22_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore23_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore24_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore25_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore26_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore27_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore3_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore30_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore4_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore5_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore6_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore7_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore8_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStore9_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_BookStoreExample_Result">
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_getBestSellerListCategoryID_Result">
+          <Property Type="Int32" Name="bestSellerID" Nullable="false" />
+          <Property Type="Int32" Name="bookID" Nullable="true" />
+          <Property Type="Int32" Name="categoryID" Nullable="true" />
+          <Property Type="Boolean" Name="isTheBestSellerActive" Nullable="true" />
+          <Property Type="String" Name="bestSellerDescription" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="bookID1" Nullable="false" />
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="bookYearOfPublication" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="publisherID" Nullable="true" />
+          <Property Type="Decimal" Name="bookPrice" Nullable="true" Precision="8" Scale="3" />
+          <Property Type="Byte" Name="bookPageCount" Nullable="true" />
+          <Property Type="Byte" Name="bookStockQty" Nullable="true" />
+          <Property Type="Int32" Name="languageID" Nullable="true" />
+          <Property Type="String" Name="bookDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheBookActive" Nullable="true" />
+          <Property Type="String" Name="bookCoverPhoto" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="bookISBN" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="bookID2" Nullable="false" />
+          <Property Type="Int32" Name="categoryID1" Nullable="false" />
+          <Property Type="Int32" Name="categoryID2" Nullable="false" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="categoryDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheCategoryActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_getBookListWithCategoryID_Result">
+          <Property Type="Int32" Name="bookID" Nullable="false" />
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="bookYearOfPublication" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="publisherID" Nullable="true" />
+          <Property Type="Decimal" Name="bookPrice" Nullable="true" Precision="8" Scale="3" />
+          <Property Type="Byte" Name="bookPageCount" Nullable="true" />
+          <Property Type="Byte" Name="bookStockQty" Nullable="true" />
+          <Property Type="Int32" Name="languageID" Nullable="true" />
+          <Property Type="String" Name="bookDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheBookActive" Nullable="true" />
+          <Property Type="String" Name="bookCoverPhoto" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="bookISBN" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="bookID1" Nullable="false" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="Int32" Name="categoryID1" Nullable="false" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="categoryDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheCategoryActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_getBookListWithKategoriID_Result">
+          <Property Type="Int32" Name="bookID" Nullable="false" />
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="bookYearOfPublication" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="publisherID" Nullable="true" />
+          <Property Type="Decimal" Name="bookPrice" Nullable="true" Precision="8" Scale="3" />
+          <Property Type="Byte" Name="bookPageCount" Nullable="true" />
+          <Property Type="Byte" Name="bookStockQty" Nullable="true" />
+          <Property Type="Int32" Name="languageID" Nullable="true" />
+          <Property Type="String" Name="bookDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheBookActive" Nullable="true" />
+          <Property Type="String" Name="bookCoverPhoto" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="bookISBN" Nullable="true" MaxLength="13" />
+        </ComplexType>
+        <ComplexType Name="sp_getBookListWithPublisherID_Result">
+          <Property Type="Int32" Name="bookID" Nullable="false" />
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="bookYearOfPublication" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="publisherID" Nullable="true" />
+          <Property Type="Decimal" Name="bookPrice" Nullable="true" Precision="8" Scale="3" />
+          <Property Type="Byte" Name="bookPageCount" Nullable="true" />
+          <Property Type="Byte" Name="bookStockQty" Nullable="true" />
+          <Property Type="Int32" Name="languageID" Nullable="true" />
+          <Property Type="String" Name="bookDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheBookActive" Nullable="true" />
+          <Property Type="String" Name="bookCoverPhoto" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="bookISBN" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="publisherID1" Nullable="false" />
+          <Property Type="String" Name="publisherName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="publisherAddress" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="countryID" Nullable="true" />
+          <Property Type="Int32" Name="cityID" Nullable="true" />
+          <Property Type="Int32" Name="districtID" Nullable="true" />
+          <Property Type="String" Name="publisherPhone" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="publisherAuthorizedNameSurname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="publisherEmail" Nullable="true" MaxLength="255" />
+          <Property Type="Boolean" Name="isThePublisherActive" Nullable="true" />
+          <Property Type="String" Name="publisherDescription" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="publisherPostCode" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="sp_getBookListWithWriterID_Result">
+          <Property Type="Int32" Name="bookID" Nullable="false" />
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="bookYearOfPublication" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="publisherID" Nullable="true" />
+          <Property Type="Decimal" Name="bookPrice" Nullable="true" Precision="8" Scale="3" />
+          <Property Type="Byte" Name="bookPageCount" Nullable="true" />
+          <Property Type="Byte" Name="bookStockQty" Nullable="true" />
+          <Property Type="Int32" Name="languageID" Nullable="true" />
+          <Property Type="String" Name="bookDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheBookActive" Nullable="true" />
+          <Property Type="String" Name="bookCoverPhoto" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="bookISBN" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="bookID1" Nullable="false" />
+          <Property Type="Int32" Name="writerID" Nullable="false" />
+          <Property Type="Int32" Name="writerID1" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="countryID" Nullable="true" />
+          <Property Type="Int32" Name="genderID" Nullable="true" />
+          <Property Type="Boolean" Name="isTheWriterActive" Nullable="true" />
+          <Property Type="String" Name="writerDescription" Nullable="true" MaxLength="400" />
+        </ComplexType>
+        <ComplexType Name="sp_getBookWriterOrCategoryName_Result">
+          <Property Type="Int32" Name="bookID" Nullable="false" />
+          <Property Type="String" Name="bookName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="bookYearOfPublication" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="publisherID" Nullable="true" />
+          <Property Type="Decimal" Name="bookPrice" Nullable="true" Precision="8" Scale="3" />
+          <Property Type="Byte" Name="bookPageCount" Nullable="true" />
+          <Property Type="Byte" Name="bookStockQty" Nullable="true" />
+          <Property Type="Int32" Name="languageID" Nullable="true" />
+          <Property Type="String" Name="bookDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheBookActive" Nullable="true" />
+          <Property Type="String" Name="bookCoverPhoto" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="bookISBN" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="bookID1" Nullable="false" />
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="Int32" Name="categoryID1" Nullable="false" />
+          <Property Type="String" Name="categoryName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="categoryDescription" Nullable="true" MaxLength="400" />
+          <Property Type="Boolean" Name="isTheCategoryActive" Nullable="true" />
+          <Property Type="Int32" Name="bookID2" Nullable="false" />
+          <Property Type="Int32" Name="writerID" Nullable="false" />
+          <Property Type="Int32" Name="writerID1" Nullable="false" />
+          <Property Type="String" Name="writerNameSurname" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="countryID" Nullable="true" />
+          <Property Type="Int32" Name="genderID" Nullable="true" />
+          <Property Type="Boolean" Name="isTheWriterActive" Nullable="true" />
+          <Property Type="String" Name="writerDescription" Nullable="true" MaxLength="400" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_BookStore2ModelStoreContainer" CdmEntityContainer="DB_BookStore2Entities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="adminID" ColumnName="adminID" />
+                <ScalarProperty Name="adminName" ColumnName="adminName" />
+                <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+                <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Books">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookYearOfPublication" ColumnName="bookYearOfPublication" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookPageCount" ColumnName="bookPageCount" />
+                <ScalarProperty Name="bookStockQty" ColumnName="bookStockQty" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="isTheBookActive" ColumnName="isTheBookActive" />
+                <ScalarProperty Name="bookCoverPhoto" ColumnName="bookCoverPhoto" />
+                <ScalarProperty Name="bookISBN" ColumnName="bookISBN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+                <ScalarProperty Name="isTheCategoryActive" ColumnName="isTheCategoryActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="customerSurname" ColumnName="customerSurname" />
+                <ScalarProperty Name="customerTCIdentityNumber" ColumnName="customerTCIdentityNumber" />
+                <ScalarProperty Name="customerEmail" ColumnName="customerEmail" />
+                <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+                <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="customerPostCode" ColumnName="customerPostCode" />
+                <ScalarProperty Name="isTheCustomerActive" ColumnName="isTheCustomerActive" />
+                <ScalarProperty Name="customerPassword" ColumnName="customerPassword" />
+                <ScalarProperty Name="customerCurrentAccount" ColumnName="customerCurrentAccount" />
+                <ScalarProperty Name="customerBirthDate" ColumnName="customerBirthDate" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="customerDescription" ColumnName="customerDescription" />
+                <ScalarProperty Name="isTheCustomerInstitutional" ColumnName="isTheCustomerInstitutional" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="employeeName" ColumnName="employeeName" />
+                <ScalarProperty Name="employeeSurname" ColumnName="employeeSurname" />
+                <ScalarProperty Name="employeePhone" ColumnName="employeePhone" />
+                <ScalarProperty Name="employeeTCIdentityNumber" ColumnName="employeeTCIdentityNumber" />
+                <ScalarProperty Name="employeeSgkNumber" ColumnName="employeeSgkNumber" />
+                <ScalarProperty Name="employeeStartingDateOfEmployment" ColumnName="employeeStartingDateOfEmployment" />
+                <ScalarProperty Name="employeeEndingDateOfEmployment" ColumnName="employeeEndingDateOfEmployment" />
+                <ScalarProperty Name="employeeSalary" ColumnName="employeeSalary" />
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+                <ScalarProperty Name="employeeAddress" ColumnName="employeeAddress" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="isTheEmployeeActive" ColumnName="isTheEmployeeActive" />
+                <ScalarProperty Name="employeeBirthDate" ColumnName="employeeBirthDate" />
+                <ScalarProperty Name="employeeContactNumber" ColumnName="employeeContactNumber" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="employeeDescription" ColumnName="employeeDescription" />
+                <ScalarProperty Name="employeeEmail" ColumnName="employeeEmail" />
+                <ScalarProperty Name="employeeReportEmployeeID" ColumnName="employeeReportEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Genders">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="genderName" ColumnName="genderName" />
+                <ScalarProperty Name="genderDescription" ColumnName="genderDescription" />
+                <ScalarProperty Name="isTheGenderActive" ColumnName="isTheGenderActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mail">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Mail">
+              <MappingFragment StoreEntitySet="Mail">
+                <ScalarProperty Name="mailID" ColumnName="mailID" />
+                <ScalarProperty Name="mailNameSurname" ColumnName="mailNameSurname" />
+                <ScalarProperty Name="mailAddress" ColumnName="mailAddress" />
+                <ScalarProperty Name="mailMessage" ColumnName="mailMessage" />
+                <ScalarProperty Name="mailSubject" ColumnName="mailSubject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishers">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Publishers">
+              <MappingFragment StoreEntitySet="Publishers">
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="publisherName" ColumnName="publisherName" />
+                <ScalarProperty Name="publisherAddress" ColumnName="publisherAddress" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="publisherPhone" ColumnName="publisherPhone" />
+                <ScalarProperty Name="publisherAuthorizedNameSurname" ColumnName="publisherAuthorizedNameSurname" />
+                <ScalarProperty Name="publisherEmail" ColumnName="publisherEmail" />
+                <ScalarProperty Name="isThePublisherActive" ColumnName="isThePublisherActive" />
+                <ScalarProperty Name="publisherDescription" ColumnName="publisherDescription" />
+                <ScalarProperty Name="publisherPostCode" ColumnName="publisherPostCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Sales">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="salesID" ColumnName="salesID" />
+                <ScalarProperty Name="salesBillNumber" ColumnName="salesBillNumber" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="salesPrice" ColumnName="salesPrice" />
+                <ScalarProperty Name="salesVatRate" ColumnName="salesVatRate" />
+                <ScalarProperty Name="salesDate" ColumnName="salesDate" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="isTheSalesActive" ColumnName="isTheSalesActive" />
+                <ScalarProperty Name="salesDescription" ColumnName="salesDescription" />
+                <ScalarProperty Name="salesPiece" ColumnName="salesPiece" />
+                <ScalarProperty Name="salesAddress" ColumnName="salesAddress" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="salesPostCode" ColumnName="salesPostCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_City">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.tbl_City">
+              <MappingFragment StoreEntitySet="tbl_City">
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="cityDescription" ColumnName="cityDescription" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Country">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.tbl_Country">
+              <MappingFragment StoreEntitySet="tbl_Country">
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="countryShortCode" ColumnName="countryShortCode" />
+                <ScalarProperty Name="countryPhoneCode" ColumnName="countryPhoneCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_District">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.tbl_District">
+              <MappingFragment StoreEntitySet="tbl_District">
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="districtName" ColumnName="districtName" />
+                <ScalarProperty Name="districtDescription" ColumnName="districtDescription" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Languages">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.tbl_Languages">
+              <MappingFragment StoreEntitySet="tbl_Languages">
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="languageName" ColumnName="languageName" />
+                <ScalarProperty Name="languageDescription" ColumnName="languageDescription" />
+                <ScalarProperty Name="languageCode" ColumnName="languageCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titles">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Titles">
+              <MappingFragment StoreEntitySet="Titles">
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+                <ScalarProperty Name="titleName" ColumnName="titleName" />
+                <ScalarProperty Name="titleShortCode" ColumnName="titleShortCode" />
+                <ScalarProperty Name="titleDescription" ColumnName="titleDescription" />
+                <ScalarProperty Name="isTheTitleActive" ColumnName="isTheTitleActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Writers">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Writers">
+              <MappingFragment StoreEntitySet="Writers">
+                <ScalarProperty Name="writerID" ColumnName="writerID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="isTheWriterActive" ColumnName="isTheWriterActive" />
+                <ScalarProperty Name="writerDescription" ColumnName="writerDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="About">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="aboutID" ColumnName="aboutID" />
+                <ScalarProperty Name="aboutDescription" ColumnName="aboutDescription" />
+                <ScalarProperty Name="aboutEditörs" ColumnName="aboutEditörs" />
+                <ScalarProperty Name="aboutSales" ColumnName="aboutSales" />
+                <ScalarProperty Name="isTheAboutActive" ColumnName="isTheAboutActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BestSeller">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.BestSeller">
+              <MappingFragment StoreEntitySet="BestSeller">
+                <ScalarProperty Name="bestSellerID" ColumnName="bestSellerID" />
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="isTheBestSellerActive" ColumnName="isTheBestSellerActive" />
+                <ScalarProperty Name="bestSellerDescription" ColumnName="bestSellerDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="contactID" ColumnName="contactID" />
+                <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
+                <ScalarProperty Name="contactAddress" ColumnName="contactAddress" />
+                <ScalarProperty Name="contactEmail" ColumnName="contactEmail" />
+                <ScalarProperty Name="isTheContactActive" ColumnName="isTheContactActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discount">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.Discount">
+              <MappingFragment StoreEntitySet="Discount">
+                <ScalarProperty Name="discountID" ColumnName="discountID" />
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="discountPrice" ColumnName="discountPrice" />
+                <ScalarProperty Name="discountRatio" ColumnName="discountRatio" />
+                <ScalarProperty Name="writerID" ColumnName="writerID" />
+                <ScalarProperty Name="isTheDiscountActive" ColumnName="isTheDiscountActive" />
+                <ScalarProperty Name="discountDescription" ColumnName="discountDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userType">
+            <EntityTypeMapping TypeName="DB_BookStore2Model.userType">
+              <MappingFragment StoreEntitySet="userType">
+                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
+                <ScalarProperty Name="userTypeName" ColumnName="userTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="BookEmployees" TypeName="DB_BookStore2Model.BookEmployees" StoreEntitySet="BookEmployees">
+            <EndProperty Name="Books">
+              <ScalarProperty Name="bookID" ColumnName="bookID" />
+            </EndProperty>
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BooksCategories" TypeName="DB_BookStore2Model.BooksCategories" StoreEntitySet="BooksCategories">
+            <EndProperty Name="Books">
+              <ScalarProperty Name="bookID" ColumnName="bookID" />
+            </EndProperty>
+            <EndProperty Name="Categories">
+              <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BooksCustomers" TypeName="DB_BookStore2Model.BooksCustomers" StoreEntitySet="BooksCustomers">
+            <EndProperty Name="Books">
+              <ScalarProperty Name="bookID" ColumnName="bookID" />
+            </EndProperty>
+            <EndProperty Name="Customers">
+              <ScalarProperty Name="customerID" ColumnName="customerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BookWriters" TypeName="DB_BookStore2Model.BookWriters" StoreEntitySet="BookWriters">
+            <EndProperty Name="Books">
+              <ScalarProperty Name="bookID" ColumnName="bookID" />
+            </EndProperty>
+            <EndProperty Name="Writers">
+              <ScalarProperty Name="writerID" ColumnName="writerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EmployeesLanguages" TypeName="DB_BookStore2Model.EmployeesLanguages" StoreEntitySet="EmployeesLanguages">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+            </EndProperty>
+            <EndProperty Name="tbl_Languages">
+              <ScalarProperty Name="languageID" ColumnName="languageID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PublishersCategories" TypeName="DB_BookStore2Model.PublishersCategories" StoreEntitySet="PublishersCategories">
+            <EndProperty Name="Categories">
+              <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+            </EndProperty>
+            <EndProperty Name="Publishers">
+              <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WriterCategories" TypeName="DB_BookStore2Model.WriterCategories" StoreEntitySet="WriterCategories">
+            <EndProperty Name="Categories">
+              <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+            </EndProperty>
+            <EndProperty Name="Writers">
+              <ScalarProperty Name="writerID" ColumnName="writerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_BookStore2Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_BookStore" FunctionName="DB_BookStore2Model.Store.sp_BookStore">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore1" FunctionName="DB_BookStore2Model.Store.sp_BookStore1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore1_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore10" FunctionName="DB_BookStore2Model.Store.sp_BookStore10">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore10_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore17" FunctionName="DB_BookStore2Model.Store.sp_BookStore17">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore17_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore18" FunctionName="DB_BookStore2Model.Store.sp_BookStore18">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore18_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore19" FunctionName="DB_BookStore2Model.Store.sp_BookStore19">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore19_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore2" FunctionName="DB_BookStore2Model.Store.sp_BookStore2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore2_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore20" FunctionName="DB_BookStore2Model.Store.sp_BookStore20">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore20_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore21" FunctionName="DB_BookStore2Model.Store.sp_BookStore21">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore21_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore22" FunctionName="DB_BookStore2Model.Store.sp_BookStore22">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore22_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore23" FunctionName="DB_BookStore2Model.Store.sp_BookStore23">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore23_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore24" FunctionName="DB_BookStore2Model.Store.sp_BookStore24">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore24_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore25" FunctionName="DB_BookStore2Model.Store.sp_BookStore25">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore25_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore26" FunctionName="DB_BookStore2Model.Store.sp_BookStore26">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore26_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore27" FunctionName="DB_BookStore2Model.Store.sp_BookStore27">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore27_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore3" FunctionName="DB_BookStore2Model.Store.sp_BookStore3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore3_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore30" FunctionName="DB_BookStore2Model.Store.sp_BookStore30">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore30_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore4" FunctionName="DB_BookStore2Model.Store.sp_BookStore4">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore4_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore5" FunctionName="DB_BookStore2Model.Store.sp_BookStore5">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore5_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore6" FunctionName="DB_BookStore2Model.Store.sp_BookStore6">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore6_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore7" FunctionName="DB_BookStore2Model.Store.sp_BookStore7">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore7_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore8" FunctionName="DB_BookStore2Model.Store.sp_BookStore8">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore8_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStore9" FunctionName="DB_BookStore2Model.Store.sp_BookStore9">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStore9_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BookStoreExample" FunctionName="DB_BookStore2Model.Store.sp_BookStoreExample">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_BookStoreExample_Result">
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_BookStore2Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_BookStore2Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_getBestSellerListCategoryID" FunctionName="DB_BookStore2Model.Store.sp_getBestSellerListCategoryID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_getBestSellerListCategoryID_Result">
+                <ScalarProperty Name="bestSellerID" ColumnName="bestSellerID" />
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="isTheBestSellerActive" ColumnName="isTheBestSellerActive" />
+                <ScalarProperty Name="bestSellerDescription" ColumnName="bestSellerDescription" />
+                <ScalarProperty Name="bookID1" ColumnName="bookID1" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookYearOfPublication" ColumnName="bookYearOfPublication" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookPageCount" ColumnName="bookPageCount" />
+                <ScalarProperty Name="bookStockQty" ColumnName="bookStockQty" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="isTheBookActive" ColumnName="isTheBookActive" />
+                <ScalarProperty Name="bookCoverPhoto" ColumnName="bookCoverPhoto" />
+                <ScalarProperty Name="bookISBN" ColumnName="bookISBN" />
+                <ScalarProperty Name="bookID2" ColumnName="bookID2" />
+                <ScalarProperty Name="categoryID1" ColumnName="categoryID1" />
+                <ScalarProperty Name="categoryID2" ColumnName="categoryID2" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+                <ScalarProperty Name="isTheCategoryActive" ColumnName="isTheCategoryActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getBookListWithCategoryID" FunctionName="DB_BookStore2Model.Store.sp_getBookListWithCategoryID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_getBookListWithCategoryID_Result">
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookYearOfPublication" ColumnName="bookYearOfPublication" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookPageCount" ColumnName="bookPageCount" />
+                <ScalarProperty Name="bookStockQty" ColumnName="bookStockQty" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="isTheBookActive" ColumnName="isTheBookActive" />
+                <ScalarProperty Name="bookCoverPhoto" ColumnName="bookCoverPhoto" />
+                <ScalarProperty Name="bookISBN" ColumnName="bookISBN" />
+                <ScalarProperty Name="bookID1" ColumnName="bookID1" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="categoryID1" ColumnName="categoryID1" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+                <ScalarProperty Name="isTheCategoryActive" ColumnName="isTheCategoryActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getBookListWithKategoriID" FunctionName="DB_BookStore2Model.Store.sp_getBookListWithKategoriID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_getBookListWithKategoriID_Result">
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookYearOfPublication" ColumnName="bookYearOfPublication" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookPageCount" ColumnName="bookPageCount" />
+                <ScalarProperty Name="bookStockQty" ColumnName="bookStockQty" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="isTheBookActive" ColumnName="isTheBookActive" />
+                <ScalarProperty Name="bookCoverPhoto" ColumnName="bookCoverPhoto" />
+                <ScalarProperty Name="bookISBN" ColumnName="bookISBN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getBookListWithPublisherID" FunctionName="DB_BookStore2Model.Store.sp_getBookListWithPublisherID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_getBookListWithPublisherID_Result">
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookYearOfPublication" ColumnName="bookYearOfPublication" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookPageCount" ColumnName="bookPageCount" />
+                <ScalarProperty Name="bookStockQty" ColumnName="bookStockQty" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="isTheBookActive" ColumnName="isTheBookActive" />
+                <ScalarProperty Name="bookCoverPhoto" ColumnName="bookCoverPhoto" />
+                <ScalarProperty Name="bookISBN" ColumnName="bookISBN" />
+                <ScalarProperty Name="publisherID1" ColumnName="publisherID1" />
+                <ScalarProperty Name="publisherName" ColumnName="publisherName" />
+                <ScalarProperty Name="publisherAddress" ColumnName="publisherAddress" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="publisherPhone" ColumnName="publisherPhone" />
+                <ScalarProperty Name="publisherAuthorizedNameSurname" ColumnName="publisherAuthorizedNameSurname" />
+                <ScalarProperty Name="publisherEmail" ColumnName="publisherEmail" />
+                <ScalarProperty Name="isThePublisherActive" ColumnName="isThePublisherActive" />
+                <ScalarProperty Name="publisherDescription" ColumnName="publisherDescription" />
+                <ScalarProperty Name="publisherPostCode" ColumnName="publisherPostCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getBookListWithWriterID" FunctionName="DB_BookStore2Model.Store.sp_getBookListWithWriterID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_getBookListWithWriterID_Result">
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookYearOfPublication" ColumnName="bookYearOfPublication" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookPageCount" ColumnName="bookPageCount" />
+                <ScalarProperty Name="bookStockQty" ColumnName="bookStockQty" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="isTheBookActive" ColumnName="isTheBookActive" />
+                <ScalarProperty Name="bookCoverPhoto" ColumnName="bookCoverPhoto" />
+                <ScalarProperty Name="bookISBN" ColumnName="bookISBN" />
+                <ScalarProperty Name="bookID1" ColumnName="bookID1" />
+                <ScalarProperty Name="writerID" ColumnName="writerID" />
+                <ScalarProperty Name="writerID1" ColumnName="writerID1" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="isTheWriterActive" ColumnName="isTheWriterActive" />
+                <ScalarProperty Name="writerDescription" ColumnName="writerDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getBookWriterOrCategoryName" FunctionName="DB_BookStore2Model.Store.sp_getBookWriterOrCategoryName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_getBookWriterOrCategoryName_Result">
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookYearOfPublication" ColumnName="bookYearOfPublication" />
+                <ScalarProperty Name="publisherID" ColumnName="publisherID" />
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookPageCount" ColumnName="bookPageCount" />
+                <ScalarProperty Name="bookStockQty" ColumnName="bookStockQty" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="isTheBookActive" ColumnName="isTheBookActive" />
+                <ScalarProperty Name="bookCoverPhoto" ColumnName="bookCoverPhoto" />
+                <ScalarProperty Name="bookISBN" ColumnName="bookISBN" />
+                <ScalarProperty Name="bookID1" ColumnName="bookID1" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="categoryID1" ColumnName="categoryID1" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+                <ScalarProperty Name="isTheCategoryActive" ColumnName="isTheCategoryActive" />
+                <ScalarProperty Name="bookID2" ColumnName="bookID2" />
+                <ScalarProperty Name="writerID" ColumnName="writerID" />
+                <ScalarProperty Name="writerID1" ColumnName="writerID1" />
+                <ScalarProperty Name="writerNameSurname" ColumnName="writerNameSurname" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="isTheWriterActive" ColumnName="isTheWriterActive" />
+                <ScalarProperty Name="writerDescription" ColumnName="writerDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_BookStore2Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_BookStore2Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_BookStore2Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_BookStore2Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_BookStore2Model.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
